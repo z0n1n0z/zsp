@@ -1,0 +1,9 @@
+ZigzagScan&Print (zsp) project
+
+Scopo del progetto:
+fornire un servizio di connessione - scansione - elaborazione - produzione
+per brscan-skey ("scan-to-pc" --> "file") e fra PC GNU/Linux e "Brother MFC-L2710DW" (o altra macchina simile)
+attraverso
+- uno script riconosciuto dall'infrastruttura di brscan
+- un'interfaccia per la configurazione dello script (CLI, GUI ed eventuale gestione internet/web)
+- un sistema di aggiornamento automatico via web

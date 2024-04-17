@@ -1,0 +1,508 @@
+# ZigzagScan&Print: italian locale
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR Gianluca Zoni - z0n1n0z <zoninoz@inventati.org>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-22 18:57+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Gianluca Zoni <zoninoz@inventati.org>\n"
+"Language-Team: Italiano <it@li.org>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../brscan_to_pc.sh:125
+msgid "Scanned document"
+msgstr "Documento scansionato"
+
+#: ../brscan_to_pc.sh:128
+msgid "Attached scanned document from"
+msgstr "Documento allegato scansionato da"
+
+#: ../brscan_to_pc.sh:129
+msgid "Mail sent to"
+msgstr "Mail inviata da"
+
+#: ../brscan_to_pc.sh:134
+msgid "wait ..."
+msgstr "attendi ..."
+
+#: ../brscan_to_pc.sh:136
+msgid "done"
+msgstr "fatto"
+
+#: ../common.sh:62
+msgid "Error: pnmflip/pamflip not found. Install netpbm package first."
+msgstr ""
+"Errore: pnmflip/pamflip non trovato. Installa prima il pacchetto netpbm"
+
+#: ../common.sh:162
+msgid "No device found: ... wait ..."
+msgstr "Nessun dispositivo trovato: ... attendi ..."
+
+#: ../common.sh:187
+msgid "lpstat: command not found"
+msgstr "lpstat: comando non trovato"
+
+#: ../common.sh:426
+msgid "Configuration"
+msgstr "Configurazione"
+
+#: ../common.sh:481
+msgid "Value already set"
+msgstr "Valore già impostato"
+
+#: ../common.sh:486 ../common.sh:503
+#, sh-format
+msgid "Error: $conf_var does not exist\\nAvailable parameters"
+msgstr "Error: $conf_var non esiste\\nParametri disponibili"
+
+#: ../common.sh:643
+msgid "brscan-skey already started by %s in %s"
+msgstr "brscan-skey già avviato da %s in %s"
+
+#: ../common.sh:646
+msgid "started"
+msgstr "avviato"
+
+#: ../common.sh:656
+msgid "brscan-skey started by %s in %s"
+msgstr "brscan-skey avviato da %s in %s"
+
+#: ../common.sh:657
+msgid "Need root rights (sudo):"
+msgstr "Richiede i diritti di root (sudo)"
+
+#: ../common.sh:659 ../common.sh:662
+msgid "stopped"
+msgstr "fermato"
+
+#: ../common.sh:665
+msgid "already stopped"
+msgstr "già fermato"
+
+#: ../common.sh:670
+msgid "Restarting brscan-skey"
+msgstr "Riavviamento di brscan-skey"
+
+#: ../common.sh:967 ../common.sh:996 ../common.sh:1033 ../common.sh:1067
+#: ../gui.sh:832 ../gui.sh:896
+msgid "One sided"
+msgstr "Un lato"
+
+#: ../common.sh:969 ../common.sh:1035 ../gui.sh:832
+msgid "Two sided"
+msgstr "Due lati"
+
+#: ../common.sh:975 ../common.sh:1041 ../gui.sh:839
+msgid "Portrait"
+msgstr "Verticale"
+
+#: ../common.sh:977 ../common.sh:1043 ../gui.sh:839
+msgid "Landscape"
+msgstr "Orizzontale"
+
+#: ../common.sh:986 ../common.sh:1057 ../gui.sh:889
+msgid "Even"
+msgstr "Pari"
+
+#: ../common.sh:988 ../common.sh:1059 ../gui.sh:889
+msgid "Odd"
+msgstr "Dispari"
+
+#: ../common.sh:990 ../gui.sh:889
+msgid "All"
+msgstr "Tutti"
+
+#: ../common.sh:998 ../common.sh:1069 ../gui.sh:896
+msgid "Two sided - Portrait"
+msgstr "Due lati - Verticale"
+
+#: ../common.sh:1000 ../common.sh:1071 ../gui.sh:896
+msgid "Two sided - Landscape"
+msgstr "Due lati - Orizzontale"
+
+#: ../common.sh:1161 ../zsp_install.sh:45
+msgid "Enter the user password (sudo):"
+msgstr "Inserisci la password utente (sudo)"
+
+#: ../common.sh:1162 ../gui.sh:222 ../zsp_install.sh:46
+msgid "Cancel"
+msgstr "Annulla"
+
+#: ../common.sh:1163 ../zsp_install.sh:47
+msgid "Ok"
+msgstr "Continua"
+
+#: ../common.sh:1195 ../zsp_install.sh:79
+msgid "Failure"
+msgstr "Fallimento"
+
+#: ../gui.sh:57
+msgid "ZSP process console"
+msgstr "Console dei processi di ZSP"
+
+#: ../gui.sh:63
+msgid "Clean"
+msgstr "Pulisci"
+
+#: ../gui.sh:64 ../gui.sh:90 ../gui.sh:129 ../gui.sh:223 ../gui.sh:292
+#: ../gui.sh:475 ../gui.sh:595
+msgid "Close"
+msgstr "Chiudi"
+
+#: ../gui.sh:75 ../gui.sh:351 ../gui.sh:593
+msgid "Edit the configuration file"
+msgstr "Modifica il file di configurazione"
+
+#: ../gui.sh:89 ../gui.sh:128 ../gui.sh:446 ../gui.sh:474 ../gui.sh:594
+#: ../gui.sh:666
+msgid "Save"
+msgstr "Salva"
+
+#: ../gui.sh:115
+msgid "Edit the configuration file for device"
+msgstr "Modifica il file di configurazione per il dispositivo"
+
+#: ../gui.sh:116
+msgid "Configuration Editor"
+msgstr "Editor di configurazione"
+
+#: ../gui.sh:188 ../utils.sh:131
+msgid "Error: a printable file was not selected"
+msgstr "Errore: non è stato selezionato un file stampabile"
+
+#: ../gui.sh:326
+msgid ""
+"This operation will delete any user setting: do you really want to continue?"
+msgstr ""
+"Questa operazione cancellerà ogni impostazione utente: vuoi davvero "
+"continuare?"
+
+#: ../gui.sh:333 ../gui.sh:720
+msgid "Commands"
+msgstr "Comandi"
+
+#: ../gui.sh:334
+msgid "Scan"
+msgstr "Scansiona"
+
+#: ../gui.sh:335
+msgid "Scan to PC mode:"
+msgstr "Modalità Scan-to-PC"
+
+#: ../gui.sh:336
+msgid "Run Scan-to-PC"
+msgstr "Esegui Scan-to-PC"
+
+#: ../gui.sh:336
+msgid "Run brscan-to-pc mode"
+msgstr "Esegui la modalità di brscan-to-pc"
+
+#: ../gui.sh:337
+msgid "Open folder"
+msgstr "Apri la cartella"
+
+#: ../gui.sh:340
+msgid "Server brscan-skey"
+msgstr "Server brscan-skey"
+
+#: ../gui.sh:341
+msgid "Action"
+msgstr "Azione"
+
+#: ../gui.sh:342
+msgid "Run brscan-skey"
+msgstr "Esegui brscan-skey"
+
+#: ../gui.sh:342
+msgid "Start/Stop/Restart brscan-skey"
+msgstr "Avvia/Ferma/Riavvia brscan-skey"
+
+#: ../gui.sh:344 ../gui.sh:347
+msgid "Print"
+msgstr "Stampa"
+
+#: ../gui.sh:345
+msgid "Select file"
+msgstr "Seleziona il file"
+
+#: ../gui.sh:345
+msgid "Not selected"
+msgstr "Non selezionato"
+
+#: ../gui.sh:346
+msgid "Set &amp; print"
+msgstr "Imposta &amp; stampa"
+
+#: ../gui.sh:346
+msgid "Set and print the seleted file"
+msgstr "Imposta e stampa il file selezionato"
+
+#: ../gui.sh:347 ../gui.sh:348
+msgid "Print the seleted file"
+msgstr "Stampa il file selezionato"
+
+#: ../gui.sh:348
+msgid "Admin CUPS"
+msgstr "Amministra CUPS"
+
+#: ../gui.sh:350
+msgid "Setting commands"
+msgstr "Impostazione dei comandi"
+
+#: ../gui.sh:351 ../gui.sh:593
+msgid "Edit"
+msgstr "Modifica"
+
+#: ../gui.sh:352
+msgid "Reconfigure"
+msgstr "Riconfigura"
+
+#: ../gui.sh:352
+msgid "Set default configuration"
+msgstr "Imposta la configurazione predefinita"
+
+#: ../gui.sh:424 ../gui.sh:721
+msgid "Scanner settings"
+msgstr "Impostazioni dello scanner"
+
+#: ../gui.sh:425
+msgid "Filename:"
+msgstr "Nome del file:"
+
+#: ../gui.sh:426
+msgid "If empty, it will be like this"
+msgstr "Se vuoto, sarà simile a questo"
+
+#: ../gui.sh:428
+msgid "Folder:"
+msgstr "Cartella:"
+
+#: ../gui.sh:429 ../gui.sh:660
+msgid "Device:"
+msgstr "Dispositivo:"
+
+#: ../gui.sh:430
+msgid "Device settings"
+msgstr "Impostazioni del dispositivo"
+
+#: ../gui.sh:432
+msgid "Program:"
+msgstr "Programma:"
+
+#: ../gui.sh:433 ../gui.sh:663
+msgid "Sides:"
+msgstr "Lati:"
+
+#: ../gui.sh:434
+msgid "Orientation:"
+msgstr "Orientazione:"
+
+#: ../gui.sh:435
+msgid "Geometry mode:"
+msgstr "Modalità della geometria:"
+
+#: ../gui.sh:436
+msgid "File convertion:"
+msgstr "Conversione del file:"
+
+#: ../gui.sh:437
+msgid "File format:"
+msgstr "Formato del file:"
+
+#: ../gui.sh:438
+msgid "PNM to PDF mode:"
+msgstr "Modalità da PNM a PDF:"
+
+#: ../gui.sh:440
+msgid "Final operations:"
+msgstr "Operazioni finali:"
+
+#: ../gui.sh:441
+msgid "Delete temporary files"
+msgstr "Cancella i file temporanei"
+
+#: ../gui.sh:442
+msgid "Print PDF"
+msgstr "Stampa il PDF"
+
+#: ../gui.sh:444
+msgid "Email settings"
+msgstr "Impostazioni email"
+
+#: ../gui.sh:468
+msgid "<i>SCAN-TO-PC EMAIL</i> settings"
+msgstr "Impostazioni di <i>SCAN-TO-PC EMAIL</i>"
+
+#: ../gui.sh:469
+msgid "Sender email/Username"
+msgstr "Mittente email/Nome utente"
+
+#: ../gui.sh:470
+msgid "Password"
+msgstr "Password"
+
+#: ../gui.sh:471
+msgid "Server address"
+msgstr "Indirizzo del server"
+
+#: ../gui.sh:472
+msgid "Server port"
+msgstr "Porta del server"
+
+#: ../gui.sh:473
+msgid "Recipient email"
+msgstr "Destinatario email"
+
+#: ../gui.sh:475 ../gui.sh:595
+msgid "Don't save and exit"
+msgstr "Non salvare ed esci"
+
+#: ../gui.sh:540 ../gui.sh:575
+msgid "Scanner device not found"
+msgstr "Dispositivo scanner non trovato"
+
+#: ../gui.sh:546
+msgid "Scan-area geometry"
+msgstr "Geometria dell'area di scansione"
+
+#: ../gui.sh:554
+msgid "Left"
+msgstr "Sinistra"
+
+#: ../gui.sh:557
+msgid "Top"
+msgstr "Alto"
+
+#: ../gui.sh:560
+msgid "Width"
+msgstr "Larghezza"
+
+#: ../gui.sh:563
+msgid "Height"
+msgstr "Altezza"
+
+#: ../gui.sh:591
+msgid "Options specific to device"
+msgstr "Opzioni specifiche del dispositivo"
+
+#: ../gui.sh:659 ../gui.sh:722
+msgid "Printer settings"
+msgstr "Impostazioni della stampante"
+
+#: ../gui.sh:661
+msgid "Page set:"
+msgstr "Insieme di pagine:"
+
+#: ../gui.sh:662
+msgid "Pages:"
+msgstr "Pagine:"
+
+#: ../gui.sh:664
+msgid "Copies:"
+msgstr "Copie:"
+
+#: ../gui.sh:681
+msgid "Process console"
+msgstr "Console dei processi"
+
+#: ../gui.sh:701
+msgid "Updating ZigzagScan&Print"
+msgstr "Aggiornamento di ZigzagScan&Print"
+
+#: ../gui.sh:706
+msgid "Commands and settings"
+msgstr "Comandi e impostazioni"
+
+#: ../gui.sh:723
+msgid "Console"
+msgstr "Console"
+
+#: ../gui.sh:729
+msgid "Clean console"
+msgstr "Pulisci console"
+
+#: ../gui.sh:730
+msgid "Update ZSP"
+msgstr "Aggiorna ZSP"
+
+#: ../gui.sh:731
+msgid "Quit"
+msgstr "Esci"
+
+#: ../utils.sh:31
+msgid "Creating individual PDF pages"
+msgstr "Creazione delle pagine individuali in PDF"
+
+#: ../utils.sh:48
+msgid "Creation of the book in PDF"
+msgstr "Creazione del libro in PDF"
+
+#: ../utils.sh:178
+msgid "Print command sent to CUPS"
+msgstr "Comando di stampa inviato a CUPS"
+
+#: ../utils.sh:181
+msgid "Incorrect print command"
+msgstr "Comando di stampa non corretto"
+
+#: ../utils.sh:251
+msgid "not running"
+msgstr "non in esecuzione"
+
+#: ../utils.sh:272
+msgid "Error in renumbering pages"
+msgstr "Errore nella rinumerazione delle pagine"
+
+#: ../utils.sh:389
+msgid "Reformatting"
+msgstr "Riformattazione"
+
+#: ../zsp_install.sh:95
+msgid "WARNING: %s is not installed on your system"
+msgstr "ATTENZIONE: %s non è installato nel tuo sistema"
+
+#: ../zsp_install.sh:140
+msgid "Choose the configuration file (which you can manually edit)"
+msgstr "Scegli il file di configurazione (che puoi modificare manualmente)"
+
+#: ../zsp_install.sh:143
+msgid ""
+"The user configuration file is different from the default one.\\nCompare "
+"below the differences between the two files and choose which one to use"
+msgstr "Il file di configurazione dell'utente è diverso da quello predefinito.\\n"
+"Confronta le differenze qui sotto tra i due file e scegli quello da usare"
+
+#: ../zsp_install.sh:147 ../zsp_install.sh:182
+msgid "user"
+msgstr "utente"
+
+#: ../zsp_install.sh:147 ../zsp_install.sh:183
+msgid "default"
+msgstr "predefinito"
+
+#: ../zsp_install.sh:159
+msgid "ZSP installing process"
+msgstr "Processo di installazione di ZSP"
+
+#: ../zsp_install.sh:163
+msgid "1) user"
+msgstr "1) utente"
+
+#: ../zsp_install.sh:164
+msgid "2) default"
+msgstr "2) predefinito"
+
+#: ../zsp.sh:88
+msgid "Updated"
+msgstr "Aggiornato"
+
+#: ../zsp.sh:89
+msgid "Not updated"
+msgstr "Non aggiornato"

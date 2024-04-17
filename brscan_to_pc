@@ -1,0 +1,154 @@
+#!/bin/bash
+#
+# brscan_to_pc [project: ZigzagScan&Print (zsp)
+#
+# This program is free software: you can redistribute it and/or modify it 
+# under the terms of the GNU General Public License as published 
+# by the Free Software Foundation; either version 3 of the License, 
+# or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, 
+# but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
+# or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License 
+# along with this program. If not, see http://www.gnu.org/licenses/. 
+# 
+# Copyright (C) 2019: Gianluca Zoni (zoninoz) <zoninoz@inventati.org>
+# 
+# Gianluca Zoni
+# http://inventati.org/zoninoz
+# zoninoz@inventati.org
+#
+
+#set -x
+
+brscan_mode="$1"
+shift
+###############################
+#   $1 = scanner device
+#   $2 = friendly name
+#
+
+scanner_device="$1"
+scanner_device_name="$2"
+
+share="/usr/local/share/zsp"
+source "$share"/common.sh
+source "$share"/utils.sh
+
+function usage {
+    cat <<EOF
+Usage:
+    $(basename $0) brscan_mode [scanner device] [friendly name]
+	       	     
+Respect the order of the arguments.
+
+EOF
+}
+
+get_configuration
+
+if [ -n "$filename" ]
+then
+    output_tmp="$directory"/"$filename"
+else
+    output_tmp="$directory"/$(date | sed -r 's|[ :,]+|_|g')
+fi
+    
+if [ -z "$scanner_device_name" ]
+then
+    scanner_device_name=$(get_name scanner_device)
+fi
+
+## RUN SCANNER
+sleep 1
+echo "Scan from ${scanner_device_name} ($scanner_device)"
+
+for loop in 1 2 3
+do
+    if run_scanner "$scanner_device"
+    then
+        test_scanimage=true
+        break
+    else
+        test_scanimage=false
+        sleep 0.5
+    fi
+done
+
+if [ "$test_scanimage" == false ]
+then
+    echo "$err_scanner_msg"
+    exit 1
+fi
+
+## ORIENTATION
+if [ "$scanner_orientation" == landscape ]
+then
+    case "$scanner_format" in
+	tiff|pnm)
+	    convert_orientation_"$scanner_format"
+	    ;;
+	*)
+	    convert_orientation_images
+	    ;;
+    esac
+fi
+
+## PDF
+if [ "$convert_format" == pdf ]
+then
+    convert2pdf
+fi
+
+## CLEAN UP
+if [ "$convert_clean_up" == TRUE ]
+then
+    if [ "$convert_format" == pdf ]
+    then
+	for frm in pnm tiff png jpeg 
+	do
+	    rm -f "$output_tmp"*.$frm
+	done
+    fi
+    rm -f "$pnmfile".ps
+fi
+
+## PRINT PDF
+[ "$lp_print_pdf" == TRUE ] &&
+    [ -f "$output_tmp".pdf ] &&
+    print_pdf "$output_tmp".pdf
+
+## MODE
+case "$brscan_mode" in
+    email)
+	muttrc=$(mktemp)
+	cat >"$muttrc" <<EOF
+set charset="UTF-8"
+set send_charset="UTF-8"
+set date_format = "%d-%m-%y, %H:%M"
+set copy = no
+
+set from = "$email_username"
+set smtp_url="${email_proto}://${email_username}:${email_password}@${email_server}:${email_port}"
+EOF
+	mutt -F "$muttrc" \
+	     -s "$(gettext "Scanned document")" \
+	     -a "${output_tmp}"*."$convert_format" \
+	     -- "$email_recipient" \
+	     <<< "$(gettext "Attached scanned document from") $(get_name scanner_device)" &&
+	    echo "$(gettext "Mail sent to") $email_recipient"
+	;;
+    ocr)
+	for f in "${output_tmp}"*."$convert_format"
+	do
+	    echo -e "Tesseract OCR: $f to ${f%.*}\n$(gettext "wait ...")"
+	    tesseract "$f" "${f%.*}"
+	    echo -e "Tesseract OCR: $f to ${f%.*}\n$(gettext "done")"	    
+	done
+	;;
+esac
+
+echo
+exit 0

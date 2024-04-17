@@ -1,0 +1,195 @@
+#!/bin/bash
+#
+# ZigzagScan&Print (zsp)
+#
+# This program is free software: you can redistribute it and/or modify it 
+# under the terms of the GNU General Public License as published 
+# by the Free Software Foundation; either version 3 of the License, 
+# or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, 
+# but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
+# or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License 
+# along with this program. If not, see http://www.gnu.org/licenses/. 
+# 
+# Copyright (C) 2019: Gianluca Zoni (zoninoz) <zoninoz@inventati.org>
+# 
+# Gianluca Zoni
+# http://inventati.org/zoninoz
+# zoninoz@inventati.org
+#
+
+#set -x
+
+set +o history
+
+prog=$(basename $0)
+share="/usr/local/share/$prog"
+source "$share"/data.sh
+source "$share"/common.sh
+source "$share"/utils.sh
+source "$share"/gui.sh
+
+check_instance_gui &&
+    touch "$gui_log" || 
+	echo >"$gui_log"
+
+test ! -s "$conf_file" && configure
+source "$conf_file"
+
+argv=( "$@" )
+argc="$#"
+
+function usage {
+    cat <<EOF
+Usage:
+    $(basename $0) [--file|--ocr|--email|--image] [-s|--set PARAMETER="VALUE"] [-g|--get PARAMETER] [-c|--configure] [--reconfigure] [-u|--update] [-h|--help]
+    
+Options:
+        --file
+        --ocr
+        --email
+        --image	
+    -s, --set PARAMETER=VAL
+    -g, --get PARAMETER
+    -c, --configure
+        --reconfigure
+    -u, --update
+    -h, --help
+
+Configuration PARAMETERS:
+EOF
+    for conf_var in "${conf_vars[@]}"
+    do
+	printf "    %s\n" "$conf_var"
+    done
+    set -o history
+}
+
+## get opts:
+
+if [[ "${argv[@]}" =~ \-h ]]
+then
+    for ((i=0; i<$argc; i++))
+    do
+	if [[ "${argv[i]}" =~ ^\-(h|\-help)$ ]]
+	then
+	    usage
+	    exit 0
+	fi
+    done
+fi
+
+if [[ "${argv[@]}" =~ \-u ]]
+then
+    for ((i=0; i<$argc; i++))
+    do
+	if [[ "${argv[i]}" =~ ^\-(u|\-update)$ ]]
+	then
+	    update_zsp &&
+		gettext "Updated" ||
+		    gettext "Not updated"
+	    set -o history
+            exit 0
+	fi
+    done
+fi
+
+if [[ "${argv[@]}" =~ \-(re)*c ]]
+then
+    for ((i=0; i<$argc; i++))
+    do
+	if [[ "${argv[i]}" =~ ^\-(c|\-(re)*configure)$ ]]
+	then
+	    if [[ "${argv[i]}" =~ ^\-\-reconfigure$ ]]
+	    then        
+		[ -f "$conf_file" ] &&
+		    mv "$conf_file" "$conf_file".bak
+	    fi
+	    configure
+	    set -o history
+            exit 0
+	fi
+    done
+fi
+
+if [[ "${argv[@]}" =~ (file|ocr|email|image) ]]
+then
+    for ((i=0; i<$argc; i++))
+    do
+	if [[ "${argv[i]}" =~ ^\-\-(file|ocr|email|image)$ ]]
+	then
+	    mode_to_var=$(tr '[:lower:]' '[:upper:]' <<< "${BASH_REMATCH[1]}")
+	    run_brscan_to_pc "$mode_to_var"
+	    set -o history
+            exit 0
+	fi
+    done
+fi
+
+if [[ "${argv[@]}" =~ \-s ]]
+then
+    for ((i=0; i<$argc; i++))
+    do
+	if [[ "${argv[i]}" =~ ^\-(s|\-set)$ ]]
+	then
+	    if [[ "${argv[i+1]}" =~ ^([a-zA-Z_]+)\=(.*)$ ]]
+	    then
+		conf_var="${BASH_REMATCH[1]}"
+		conf_val="${BASH_REMATCH[2]}"
+
+		set_conf "$conf_var" "$conf_val"
+
+		argv[i]='-h'
+		argv[i+1]='-h'
+	    else
+		usage
+		exit 1
+	    fi
+	fi
+    done
+fi
+
+if [[ "${argv[@]}" =~ \-g ]]
+then
+    for ((i=0; i<$argc; i++))
+    do
+	if [[ "${argv[i]}" =~ ^\-(g|\-get)$ ]]
+	then
+	    if [[ "${argv[i+1]}" =~ ^([a-zA-Z_]+)$ ]]
+	    then
+		conf_var="${BASH_REMATCH[1]}"
+		get_conf "$conf_var"
+
+		argv[i]='-h'
+		argv[i+1]='-h'
+	    else
+		usage
+		exit 1
+	    fi
+	fi
+    done
+fi
+
+
+if (( argc > 0 ))
+then
+    for ((i=0; i<$argc; i++))
+    do
+	if [ -n "${argv[i]}" ] &&
+	       [ "${argv[i]}" != '-h' ]
+	then
+	    usage
+	    break
+	fi
+    done
+    set -o history
+    exit
+fi
+
+
+## main:
+test -n "$(get_main_winid)" || run_gui
+set -o history

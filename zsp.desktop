@@ -1,0 +1,20 @@
+[Desktop Entry]
+Comment[it]=
+Comment=
+Exec=zsp
+GenericName[it]=ZigzagScan&Print
+GenericName=ZigzagScan&Print
+Icon=/usr/local/share/zsp/images/zsp-32x32.png
+MimeType=
+Name[it]=ZSP
+Name=ZSP
+NoDisplay=false
+StartupNotify=true
+Terminal=false
+Categories=Office;Graphics;
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
